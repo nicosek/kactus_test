@@ -1,0 +1,46 @@
+<h1>Créer une nouvelle alerte</h1>
+
+<%= simple_form_for @request do |f| %>
+
+  <% if @request.errors.any? %>
+    <div class="errors-container">
+      <ul>
+        <% @request.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name, "Nom de l'alerte" %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.input :type_transac, class: 'form-control', :collection => %w[Vente Location], label: "Type de transaction (Vente ou Location)" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :city, "Ville" %>
+    <%= f.text_field :city, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.input :type_of_property, class: 'form-control', label: "Type de bien recherché", :collection => ["Appartement", "Maison", "Parking", "Terrain", "Boutique", "Local Commercial", "Bureaux"] %>
+  </div>
+  <div class="form-group">
+    <%= f.label :surfacemin, "Surface minimum" %>
+    <%= f.number_field :surfacemin, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :surfacemax, "Surface maximum" %>
+    <%= f.number_field :surfacemax, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :pricemin, "Budget minimum" %>
+    <%= f.number_field :pricemin, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :pricemax, "Budget maximum" %>
+    <%= f.number_field :pricemax, class: 'form-control' %>
+  </div>
+  <%= f.submit class: 'btn btn-primary', value:"Valider" %>
+<% end %>

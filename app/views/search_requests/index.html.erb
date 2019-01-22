@@ -1,0 +1,6 @@
+<h1>Liste des alertes crées</h1>
+<ul>
+  <% @requests.each do |request| %>
+    <li><%= link_to request.name, search_request_path(request) %></li>
+  <% end %>
+</ul>

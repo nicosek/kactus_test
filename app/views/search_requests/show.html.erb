@@ -1,0 +1,13 @@
+<h1><%= @request.name %></h1>
+<h2>Résultats "SeLoger.com" les 10 derniers jours</h2>
+<h3><%= @doc.xpath('//resume').text %></h3> <br>
+<ul>
+  <% @doc.xpath('//annonce').each do |annonce| %>
+    <li>
+      <p><%= annonce.xpath('descriptif').inner_text %></p>
+      <%= link_to "Lien annonce", annonce.xpath('permaLien').inner_text %>
+    </li>
+    <br>
+  <% end %>
+</ul>
+<%= @url %>
